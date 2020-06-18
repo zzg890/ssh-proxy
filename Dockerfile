@@ -5,8 +5,7 @@ RUN apt update
 RUN apt install -y curl
 RUN curl -L git.io/cow | bash
 VOLUME /root/.ssh/id_rsa
-ARG host
-ARG user
+ARG ssh-host
 RUN echo 'listen http://127.0.0.1:7777\n \
-sshServer = ${user}@${host}:7779\n' > /root/.cow/rc
-CMD [ "/root/cow" ,"-rc","/root/.cow/rc"]
+sshServer = ${ssh-host}}:7779\n' > /root/.cow/rc
+ENTRYPOINT [ "/root/cow" ]
